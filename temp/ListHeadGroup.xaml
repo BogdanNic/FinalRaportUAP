@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="FinalRaport2.ListHeadGroup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FinalRaport2"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+   xmlns:t2="using:FinalRaport2.Model"
+    
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <CollectionViewSource x:Name="cvsActivities" IsSourceGrouped="True"/>
+
+        <CollectionViewSource x:Name="cvsProjects" IsSourceGrouped="True" ItemsPath="Activities"/>
+        <DataTemplate x:Key="listViewItemTemplate">
+            <StackPanel>
+                <TextBlock Text="{Binding Username}"/>
+            </StackPanel>
+        </DataTemplate>
+        <t2:ListGroupStyleSelector x:Key="listGroupStyleSelector"/>
+    </UserControl.Resources>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock Text="{Binding Name}"/>
+        <ListView ItemsSource="{Binding Source={StaticResource cvsActivities}}"
+          ItemTemplate="{StaticResource listViewItemTemplate}"
+         
+          Margin="42,166,1004,74" Width="320"/>
+        <ListView x:Name="list" 
+          ItemTemplate="{StaticResource listViewItemTemplate}"
+         
+          Margin="606,166,440,74" Width="320"/>
+    </Grid>
+</Page>

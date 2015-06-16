@@ -1,0 +1,76 @@
+﻿<Page
+    x:Class="FinalRaport2.BlankPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FinalRaport2"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:util="using:FinalRaport2.utils"
+      DataContext="{Binding Home, Mode=TwoWay, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <util:ListGroupStyleSelector x:Key="selector"/>
+        <DataTemplate x:Key="head">
+            <Border Background="Transparent" Padding="5">
+                <Border BorderThickness="2" Width="451" 
+												Height="62" HorizontalAlignment="Left" Margin="0,0,-5,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}"  FontSize="48" Padding="6" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding SumPopulation}" />
+                        <TextBlock Text=":"/>
+                        <TextBlock Text="{Binding SumMinutes}" />
+                        <TextBlock Text="{Binding}"/>
+                    </StackPanel>
+                </Border>
+
+
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="listViewItemTemplate">
+            <StackPanel Width="320" Margin="10">
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBlock Text="{Binding Name}"/>
+                    <TextBlock Text="{Binding ID}"/>
+                    <TextBlock Text="  "/>
+                    <!--<TextBlock Text="{Binding Month, StringFormat=\{0:MMMM\}}"/>-->
+                    <TextBlock Text="{Binding Month}"/>
+                    <TextBlock Text="  "/>
+                    <TextBlock Text="{Binding Hours}"/>
+                    <TextBlock Text=":"/>
+                    <TextBlock Text="{Binding Minutes}"/>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <GridView ItemsSource="{Binding PivotCollection}">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="606"  >
+                        <Grid.Resources>
+                            <CollectionViewSource x:Name="cvs3" IsSourceGrouped="True" Source="{Binding ListGroup, Mode=TwoWay}"/>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30*"/>
+                            <RowDefinition Height="70*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="50"/>
+                        <ListView  Grid.Row="1" ItemsSource="{Binding Source={StaticResource cvs3}}" ItemTemplate="{StaticResource listViewItemTemplate}" GroupStyleSelector="{StaticResource selector}" Margin="0,10" >
+                            <ListView.GroupStyle>
+                                <GroupStyle HidesIfEmpty="True"  HeaderTemplate="{StaticResource head}"/>
+                            </ListView.GroupStyle>
+                        </ListView>
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+
+
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Command="{Binding TestCommand}" Icon="Accept" />
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

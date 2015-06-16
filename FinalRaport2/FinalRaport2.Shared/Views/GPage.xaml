@@ -1,0 +1,129 @@
+﻿<Page
+    x:Class="FinalRaport2.Views.GPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FinalRaport2.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     DataContext="{Binding Home, Mode=TwoWay, Source={StaticResource Locator}}"
+    xmlns:util="using:FinalRaport2.Converters"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:interactions="using:Microsoft.Xaml.Interactions"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <!--<CollectionViewSource x:Name="month" IsSourceGrouped="True" Source="{Binding CurrentMonth, Mode=TwoWay}"/>-->
+
+        <util:ListGroupStyleSelector x:Key="selector"/>
+        <DataTemplate x:Key="head">
+            <Border Background="Transparent" Padding="5">
+                <Border BorderThickness="2" Width="451" 
+												Height="62" HorizontalAlignment="Left" Margin="0,0,-5,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}"  FontSize="48" Padding="6" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding SumPopulation}" />
+                        <TextBlock Text=":"/>
+                        <TextBlock Text="{Binding SumMinutes}" />
+                        <TextBlock Text="{Binding}"/>
+                    </StackPanel>
+                </Border>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="listViewItemTemplate">
+            <StackPanel Width="320" Margin="10">
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBlock Text="{Binding Name}"/>
+                    <TextBlock Text="{Binding ID}"/>
+                    <TextBlock Text="  "/>
+                    <!--<TextBlock Text="{Binding Month, StringFormat=\{0:MMMM\}}"/>-->
+                    <TextBlock Text="{Binding Month}"/>
+                    <TextBlock Text="  "/>
+                    <TextBlock Text="{Binding Hours}"/>
+                    <TextBlock Text=":"/>
+                    <TextBlock Text="{Binding Minutes}"/>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+   
+        <Hub Header="Final Raport">
+            <HubSection Header="Arhiva" >
+                <DataTemplate>
+                    <GridView Grid.Column="0" ItemsSource="{Binding PivotCollection}" IsItemClickEnabled="True" Margin="0,0,200,0">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="606"  >
+                        <Grid.Resources>
+                            <CollectionViewSource x:Name="cvs3" IsSourceGrouped="True" Source="{Binding ListGroup, Mode=TwoWay}"/>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="7*"/>
+                            <RowDefinition Height="70*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="40"/>
+                        <ListView  Grid.Row="1" ItemsSource="{Binding Source={StaticResource cvs3}}" ItemTemplate="{StaticResource listViewItemTemplate}" GroupStyleSelector="{StaticResource selector}" Margin="0,10" >
+                            <ListView.GroupStyle>
+                                <GroupStyle HidesIfEmpty="True"  HeaderTemplate="{StaticResource head}"/>
+                            </ListView.GroupStyle>
+                        </ListView>
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="Iunie" DataContext="{Binding CurrentMonth}">
+                <DataTemplate>
+                    <Grid>
+                        <Grid.Resources>
+                            <CollectionViewSource x:Name="month" IsSourceGrouped="True" Source="{Binding ListGroup, Mode=TwoWay}"/>
+                        </Grid.Resources>
+                        <ListView  Grid.Row="1" ItemsSource="{Binding Source={StaticResource month}}" ItemTemplate="{StaticResource listViewItemTemplate}" GroupStyleSelector="{StaticResource selector}" Margin="0,10" >
+                            <ListView.GroupStyle>
+                                <GroupStyle HidesIfEmpty="True"  HeaderTemplate="{StaticResource head}"/>
+                            </ListView.GroupStyle>
+                        </ListView>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="Raport" DataContext="{Binding CurrentRaport}" >
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding  Username}"/>
+                        <TextBlock Text="{Binding  Hours}"/>
+                        <TextBlock Text="{Binding  Minutes}"/>
+                        <TextBlock Text="{Binding  Magazines}"/>
+                        <TextBlock Text="{Binding  Brochures}"/>
+                        <TextBlock Text="{Binding  Books}"/>
+                        <TextBlock Text="{Binding  Visits}"/>
+                        <TextBlock Text="{Binding  Studies}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
+
+        
+        <!--<StackPanel Grid.Column="1" DataContext="{Binding CurrentMonth}">
+            <Grid>
+                <Grid.Resources>
+                    <CollectionViewSource x:Name="month" IsSourceGrouped="True" Source="{Binding ListGroup, Mode=TwoWay}"/>
+                </Grid.Resources>
+                <ListView  Grid.Row="1" ItemsSource="{Binding Source={StaticResource month}}" ItemTemplate="{StaticResource listViewItemTemplate}" GroupStyleSelector="{StaticResource selector}" Margin="0,10" >
+                    <ListView.GroupStyle>
+                        <GroupStyle HidesIfEmpty="True"  HeaderTemplate="{StaticResource head}"/>
+                    </ListView.GroupStyle>
+                </ListView>
+            </Grid>
+
+        </StackPanel>-->
+     
+
+
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Accept" Label="add" Command="{Binding TestCommand}"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

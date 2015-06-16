@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>40a2ee55-3c16-49f2-8722-da2eddaa5d5e</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>FinalRaport2</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Model\PredRaport.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\RaportGroupModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)sqlite\ManagerData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)sqlite\RaportData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)sqlite\RaportLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)sqlite\SQLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)sqlite\SQLiteAsync.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Temp\Project.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)utils\ListGroupStyleSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ItemClickedConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ListGroupStyleSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\AddVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\HomeVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\HubVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\LoginVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MainViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLocator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AddPage.xaml.cs">
+      <DependentUpon>AddPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\GPage.xaml.cs">
+      <DependentUpon>GPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\GroupPage.xaml.cs">
+      <DependentUpon>GroupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\HubPage.xaml.cs">
+      <DependentUpon>HubPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>
+      </Generator>
+    </ApplicationDefinition>
+    <Page Include="$(MSBuildThisFileDirectory)style\DictionaryStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\AddPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\GPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\GroupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\HubPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="FinalRaport2.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FinalRaport2.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="52*"/>
+            <ColumnDefinition Width="168*"/>
+            <ColumnDefinition Width="171*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+        </Grid.RowDefinitions>
+        <TextBlock FontSize="30"  HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Height="36" Width="147" Grid.Column="1" Margin="10.333,196,0,0"/>
+        <TextBlock FontSize="30" Grid.Column="1" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Margin="10.333,124,0,0" Height="36" Width="147"/>
+        <TextBox HorizontalAlignment="Left"  TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Grid.Column="2" Height="34" Width="131" Margin="35.833,196,0,0"/>
+        <TextBox HorizontalAlignment="Left"  TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Grid.Column="2" Height="34" Width="131" Margin="35.833,124,0,0"/>
+
+
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar Visibility="Visible">
+            <AppBarButton Content="signIn"  Icon="Accept"/>
+            <AppBarButton Content="cancel" Icon="Cancel"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>
